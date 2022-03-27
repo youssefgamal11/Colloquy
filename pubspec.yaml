@@ -1,0 +1,43 @@
+name: chat_app
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.15.1 <3.0.0"
+
+dependencies:
+  country_code_picker: ^2.0.2
+
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  flutter_zoom_drawer: ^2.3.1
+  get: ^4.6.1
+  google_fonts: null
+  pin_code_fields: ^7.3.0
+
+dev_dependencies:
+  bloc: ^8.0.3
+  firebase_auth: ^3.3.10
+  firebase_core: ^1.13.1
+  flutter_bloc: ^8.0.1
+  flutter_lints: ^1.0.0
+  conditional_builder_null_safety: ^0.0.6
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+  assets:
+    - assets/
+
+  # example:
+  fonts:
+    - family: segoesc
+      fonts:
+        - asset: fonts/segoesc.ttf
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
