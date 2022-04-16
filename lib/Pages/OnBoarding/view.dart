@@ -1,11 +1,14 @@
+import 'package:chat_app/Helper/components.dart';
 import 'package:chat_app/Helper/constant.dart';
+import 'package:chat_app/Helper/shared_pref.dart';
 import 'package:chat_app/Pages/SignUp/view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  const OnBoardingScreen({Key? key}) : super(key: key);
+  OnBoardingScreen({Key? key}) : super(key: key);
+  // var onBoarding = CacheHelper.putBoolen(key: 'onBoarding', value: false);
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +49,9 @@ class OnBoardingScreen extends StatelessWidget {
                   height: 50,
                   child: TextButton(
                     onPressed: () {
-                      Get.to(() => SignUpScreen());
+                      CacheHelper.saveData(key: 'onBoarding', value: true).then(
+                          (value) =>
+                              navigateAndFinish(context, SignUpScreen()));
                     },
                     child: const Text(
                       'Start Chatting',

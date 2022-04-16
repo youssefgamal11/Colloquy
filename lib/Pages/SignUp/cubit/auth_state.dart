@@ -1,6 +1,5 @@
 part of 'auth_cubit.dart';
 
-@immutable
 abstract class AuthState {}
 
 class AuthInitial extends AuthState {}
@@ -15,3 +14,10 @@ class ErrorOccured extends AuthState {
 class PhoneNumberSubmitted extends AuthState {}
 
 class PhoneOTPVerified extends AuthState {}
+
+class UploadedOnFireStoreSucess extends AuthState {}
+
+class UploadedOnFireStoreFailed extends AuthState {
+  final String error;
+  UploadedOnFireStoreFailed({required this.error});
+}

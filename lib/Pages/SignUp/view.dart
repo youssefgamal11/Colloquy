@@ -1,7 +1,7 @@
-import 'package:chat_app/Helper/components.dart';
 import 'package:chat_app/Helper/constant.dart';
 import 'package:chat_app/Pages/SignIn/view.dart';
 import 'package:chat_app/Pages/SignUp/cubit/auth_cubit.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -67,167 +67,197 @@ class SignUpScreen extends StatelessWidget {
                                         height: 30,
                                       ),
                                       const Text(
-                                        'Sign Up',
+                                        'Welcome',
                                         style: TextStyle(
                                             color: Colors.white, fontSize: 22),
                                       ),
                                       const SizedBox(
-                                        height: 30,
+                                        height: 20,
                                       ),
-                                      Stack(
-                                        alignment: Alignment.bottomRight,
-                                        children: [
-                                          const Padding(
-                                            padding: EdgeInsets.all(8.0),
-                                            child: CircleAvatar(
-                                              radius: 45,
-                                              backgroundImage: AssetImage(
-                                                  'assets/profile.png'),
-                                            ),
-                                          ),
-                                          IconButton(
-                                              color: const Color(0xffD7ECFE),
-                                              onPressed: () {},
-                                              icon: const Icon(CupertinoIcons
-                                                  .add_circled_solid))
-                                        ],
-                                      ),
-                                      const SizedBox(height: 25),
-
-                                      TextFormField(
-                                        obscureText: false,
-                                        validator: (value) {
-                                          if (value!.isEmpty) {
-                                            return 'please enter your name ';
-                                          }
-                                          return null;
-                                        },
-                                        keyboardType: TextInputType.text,
-                                        controller: cubit.nameController,
-                                        decoration: InputDecoration(
-                                            hintText: 'name',
-                                            errorStyle: const TextStyle(
-                                              color: Colors.red,
-                                            ),
-                                            hintStyle: const TextStyle(
-                                              color: textColor,
-                                            ),
-                                            filled: true,
-                                            fillColor: textFormFieldColor,
-                                            contentPadding:
-                                                const EdgeInsets.only(left: 20),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    borderSide: const BorderSide(
-                                                        color: Colors.red)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                    color: Colors.red)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                    color: Colors.blue)),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                  color: textFormFieldColor,
-                                                ))),
-                                      ),
-                                      const SizedBox(height: 20),
-
-                                      TextFormField(
-                                        obscureText: false,
-                                        validator: (value) {
-                                          if (value!.isEmpty) {
-                                            return 'please enter your phone ';
-                                          } else if (value.length < 11) {
-                                            return 'phone must not be less than 11 number';
-                                          }
-                                          return null;
-                                        },
-                                        keyboardType: TextInputType.number,
-                                        controller: cubit.phoneNumberController,
-                                        decoration: InputDecoration(
-                                            hintText: 'phone',
-                                            errorStyle: const TextStyle(
-                                              color: Colors.red,
-                                            ),
-                                            hintStyle: const TextStyle(
-                                              color: textColor,
-                                            ),
-                                            filled: true,
-                                            fillColor: textFormFieldColor,
-                                            contentPadding:
-                                                const EdgeInsets.only(left: 20),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8),
-                                                    borderSide: const BorderSide(
-                                                        color: Colors.red)),
-                                            errorBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                    color: Colors.red)),
-                                            focusedBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                    color: Colors.blue)),
-                                            enabledBorder: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                borderSide: const BorderSide(
-                                                  color: textFormFieldColor,
-                                                ))),
-                                      ),
-
-                                      const SizedBox(height: 80),
-                                      // Row(
+                                      // Stack(
+                                      //   alignment: Alignment.bottomRight,
                                       //   children: [
-                                      //     // Container(
-                                      //     //   height: 45,
-                                      //     //   width: 87,
-                                      //     //   decoration: BoxDecoration(
-                                      //     //     color: textFormFieldColor,
-                                      //     //     borderRadius: BorderRadius.circular(6),
-                                      //     //   ),
-                                      //     //   child: CountryCodePicker(
-                                      //     //     showCountryOnly: false,
-                                      //     //     showOnlyCountryWhenClosed: false,
-                                      //     //     textStyle:
-                                      //     //         const TextStyle(color: textColor),
-                                      //     //     enabled: true,
-                                      //     //     favorite: const ['+20', 'EG'],
-                                      //     //     hideMainText: false,
-                                      //     //     showFlagMain: true,
-                                      //     //     showFlag: true,
-                                      //     //     hideSearch: false,
-                                      //     //     showFlagDialog: true,
-                                      //     //     padding: const EdgeInsets.all(0),
-                                      //     //   ),
-                                      //     // ),
-                                      //     // const SizedBox(width: 5),
+                                      //     const Padding(
+                                      //       padding: EdgeInsets.all(8.0),
+                                      //       child: CircleAvatar(
+                                      //         radius: 45,
+                                      //         backgroundImage: AssetImage(
+                                      //             'assets/profile.png'),
+                                      //       ),
+                                      //     ),
+                                      //     IconButton(
+                                      //         color: const Color(0xffD7ECFE),
+                                      //         onPressed: () {},
+                                      //         icon: const Icon(CupertinoIcons
+                                      //             .add_circled_solid))
                                       //   ],
                                       // ),
-                                      // const SizedBox(height: 20),
+
+                                      // const SizedBox(height: 25),
+
+                                      // TextFormField(
+                                      //   obscureText: false,
+                                      //   validator: (value) {
+                                      //     if (value!.isEmpty) {
+                                      //       return 'please enter your name ';
+                                      //     }
+                                      //     return null;
+                                      //   },
+                                      //   keyboardType: TextInputType.text,
+                                      //   controller: cubit.nameController,
+                                      //   decoration: InputDecoration(
+                                      //       hintText: 'name',
+                                      //       errorStyle: const TextStyle(
+                                      //         color: Colors.red,
+                                      //       ),
+                                      //       hintStyle: const TextStyle(
+                                      //         color: textColor,
+                                      //       ),
+                                      //       filled: true,
+                                      //       fillColor: textFormFieldColor,
+                                      //       contentPadding:
+                                      //           const EdgeInsets.only(left: 20),
+                                      //       focusedErrorBorder:
+                                      //           OutlineInputBorder(
+                                      //               borderRadius:
+                                      //                   BorderRadius.circular(
+                                      //                       8),
+                                      //               borderSide: const BorderSide(
+                                      //                   color: Colors.red)),
+                                      //       errorBorder: OutlineInputBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(8),
+                                      //           borderSide: const BorderSide(
+                                      //               color: Colors.red)),
+                                      //       focusedBorder: OutlineInputBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(8),
+                                      //           borderSide: const BorderSide(
+                                      //               color: Colors.blue)),
+                                      //       enabledBorder: OutlineInputBorder(
+                                      //           borderRadius:
+                                      //               BorderRadius.circular(8),
+                                      //           borderSide: const BorderSide(
+                                      //             color: textFormFieldColor,
+                                      //           ))),
+                                      // ),
+
+                                      const SizedBox(height: 20),
+
+                                      const SizedBox(height: 80),
+                                      Row(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 20.0),
+                                            child: Container(
+                                              height: 46,
+                                              width: 78,
+                                              decoration: BoxDecoration(
+                                                color: textFormFieldColor,
+                                                borderRadius:
+                                                    BorderRadius.circular(6),
+                                              ),
+                                              child: CountryCodePicker(
+                                                onChanged: (value) {
+                                                  cubit.countryCode = value;
+                                                },
+                                                showCountryOnly: false,
+                                                showOnlyCountryWhenClosed:
+                                                    false,
+                                                textStyle: const TextStyle(
+                                                    color: textColor),
+                                                enabled: true,
+                                                favorite: const ['+20', 'EG'],
+                                                hideMainText: false,
+                                                showFlagMain: true,
+                                                showFlag: true,
+                                                hideSearch: false,
+                                                showFlagDialog: true,
+                                                padding:
+                                                    const EdgeInsets.all(0),
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 5),
+                                          Expanded(
+                                            child: TextFormField(
+                                              obscureText: false,
+                                              validator: (value) {
+                                                if (value!.isEmpty) {
+                                                  return 'please enter your phone ';
+                                                } else if (value.length < 10) {
+                                                  return 'phone must not be less than 10 number';
+                                                }
+                                                return null;
+                                              },
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              controller:
+                                                  cubit.phoneNumberController,
+                                              decoration: InputDecoration(
+                                                  helperText: '',
+                                                  hintText: 'phone',
+                                                  errorStyle: const TextStyle(
+                                                    color: Colors.red,
+                                                  ),
+                                                  hintStyle: const TextStyle(
+                                                    color: textColor,
+                                                  ),
+                                                  filled: true,
+                                                  fillColor: textFormFieldColor,
+                                                  contentPadding:
+                                                      const EdgeInsets.only(
+                                                          left: 20),
+                                                  focusedErrorBorder:
+                                                      OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius.circular(
+                                                                  8),
+                                                          borderSide:
+                                                              const BorderSide(
+                                                                  color: Colors
+                                                                      .red)),
+                                                  errorBorder: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                      borderSide: const BorderSide(
+                                                          color: Colors.red)),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                      borderSide: const BorderSide(
+                                                          color: Colors.blue)),
+                                                  enabledBorder: OutlineInputBorder(
+                                                      borderRadius: BorderRadius.circular(8),
+                                                      borderSide: const BorderSide(
+                                                        color:
+                                                            textFormFieldColor,
+                                                      ))),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 40),
                                       ConditionalBuilder(
                                         builder: (context) => SizedBox(
                                           width: 190,
                                           height: 48,
                                           child: TextButton(
                                             onPressed: () {
+                                              if (cubit.countryCode == null) {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                        const SnackBar(
+                                                  content: Text(
+                                                      'please enter your country code '),
+                                                ));
+                                              }
                                               if (_formKey.currentState!
                                                   .validate()) {
+                                                // ignore: avoid_print
                                                 print('validate working');
                                                 ScaffoldMessenger.of(context)
                                                     .showSnackBar(
@@ -242,7 +272,7 @@ class SignUpScreen extends StatelessWidget {
                                               }
                                             },
                                             child: const Text(
-                                              'Create Account',
+                                              'Countinue',
                                               style: TextStyle(
                                                   color: authButtonText,
                                                   fontSize: 16),
@@ -259,30 +289,29 @@ class SignUpScreen extends StatelessWidget {
                                             child: CircularProgressIndicator()),
                                       ),
                                       const SizedBox(height: 15),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const Text(
-                                            'Already have account? ',
-                                            style: TextStyle(
-                                                color: bacgroundColor),
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              Get.to(() => const LoginScreen());
-                                            },
-                                            child: const Text(
-                                              'LOG IN',
-                                              style: TextStyle(
-                                                  color: Color(0xff27282C),
-                                                  decoration:
-                                                      TextDecoration.underline),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                      const SizedBox(height: 15),
+                                      // Row(
+                                      //   mainAxisAlignment:
+                                      //       MainAxisAlignment.center,
+                                      //   children: [
+                                      //     const Text(
+                                      //       'Already have account? ',
+                                      //       style: TextStyle(
+                                      //           color: bacgroundColor),
+                                      //     ),
+                                      //     GestureDetector(
+                                      //       onTap: () {
+                                      //         Get.to(() => LoginScreen());
+                                      //       },
+                                      //       child: const Text(
+                                      //         'LOG IN',
+                                      //         style: TextStyle(
+                                      //             color: Color(0xff27282C),
+                                      //             decoration:
+                                      //                 TextDecoration.underline),
+                                      //       ),
+                                      //     )
+                                      //   ],
+                                      // ),
                                     ],
                                   ),
                                 )

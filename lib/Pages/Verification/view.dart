@@ -1,4 +1,3 @@
-import 'package:chat_app/Pages/Chat/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -7,6 +6,7 @@ import '../Home/view.dart';
 import '../SignIn/view.dart';
 import '../SignUp/cubit/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore: camel_case_types
 class verificationScreen extends StatelessWidget {
@@ -19,9 +19,8 @@ class verificationScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is PhoneOTPVerified) {
           Navigator.pop(context);
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const HomeScreen(null)));
-          // Get.to((context) => const ChatScreen());
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
         }
         if (state is ErrorOccured) {
           String errorMsg = (state).error;
@@ -49,7 +48,7 @@ class verificationScreen extends StatelessWidget {
             backgroundColor: bacgroundColor,
             leading: IconButton(
                 onPressed: () {
-                  Get.to(() => const LoginScreen());
+                  // Get.to(() => LoginScreen());
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios_new,
@@ -96,12 +95,12 @@ class verificationScreen extends StatelessWidget {
                                     height: 10,
                                   ),
                                   const Text(
-                                    'Please enter verification code you \'ve received on',
+                                    'Please enter verification code you will receive on',
                                     style: TextStyle(color: Colors.white),
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    phone,
+                                    '0$phone',
                                     style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -141,7 +140,13 @@ class verificationScreen extends StatelessWidget {
                                     height: 48,
                                     child: TextButton(
                                       onPressed: () {
-                                        cubit.submitOTP();
+                                        cubit.submitOTP().then((value) {
+                                          cubit.createUser(
+                                              phone: cubit
+                                                  .phoneNumberController.text,
+                                              uId: FirebaseAuth
+                                                  .instance.currentUser!.uid);
+                                        });
                                       },
                                       child: const Text(
                                         'Confirm',
@@ -167,11 +172,11 @@ class verificationScreen extends StatelessWidget {
                                           color: Colors.white,
                                           size: 15,
                                         ),
-                                        Text(
-                                          '  Resend Code ',
-                                          style:
-                                              TextStyle(color: bacgroundColor),
-                                        ),
+                                        // Text(
+                                        //   '  Resend Code ',
+                                        //   style:
+                                        //       TextStyle(color: bacgroundColor),
+                                        // ),
                                       ],
                                     ),
                                   ),
