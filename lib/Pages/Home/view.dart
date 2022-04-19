@@ -1,9 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../Helper/components.dart';
 import '../../Helper/constant.dart';
 import '../Drawer/view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends GetView<MyDrawerController> {
@@ -11,6 +12,15 @@ class HomeScreen extends GetView<MyDrawerController> {
   // ignore: use_key_in_widget_constructors
   HomeScreen();
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  var currentUser = FirebaseAuth.instance.currentUser!.uid;
+  getUsers(AsyncSnapshot<QuerySnapshot> snapshot) {
+    return snapshot.data?.docs
+        .map((doc) => chatItem(
+            name: doc['phone'],
+            friendName: doc['phone'],
+            friendUid: doc['uId']))
+        .toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,39 +56,32 @@ class HomeScreen extends GetView<MyDrawerController> {
                 color: Color(0xff5DAABC),
               )),
         ),
-        body: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: true,
-                child: Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    Expanded(
-                      child: Container(
-                        width: double.infinity,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadiusDirectional.only(
-                              topEnd: Radius.circular(30),
-                              topStart: Radius.circular(30)),
-                          color: insideAppBackground,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 30.0),
-                          child: ListView.builder(
-                            shrinkWrap: false,
-                            physics: const BouncingScrollPhysics(),
-                            itemBuilder: ((context, index) => chatItem()),
-                            itemCount: 20,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
+        body: StreamBuilder<QuerySnapshot>(
+          //this line to get all users expect current user
+          stream: FirebaseFirestore.instance
+              .collection('users')
+              .where('uId', isNotEqualTo: currentUser)
+              .snapshots(),
+          builder:
+              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return customLayout(
+                  const Center(child: Text('something went wrong ')));
+            }
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasData) {
+              return customLayout(Center(
+                child: ListView(
+                  shrinkWrap: false,
+                  physics: const BouncingScrollPhysics(),
+                  children: getUsers(snapshot),
                 ),
-              )
-            ],
-          ),
+              ));
+            }
+            throw '';
+          },
         ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {},
@@ -94,6 +97,6 @@ class HomeScreen extends GetView<MyDrawerController> {
             size: 17,
           ),
         ),
-        drawer: DrawerScreen());
+        drawer: const DrawerScreen());
   }
 }

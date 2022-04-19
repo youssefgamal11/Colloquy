@@ -1,8 +1,6 @@
 import 'package:chat_app/Helper/constant.dart';
-import 'package:chat_app/Pages/SignIn/view.dart';
 import 'package:chat_app/Pages/SignUp/cubit/auth_cubit.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -11,6 +11,7 @@ class AuthCubit extends Cubit<AuthState> {
   static AuthCubit get(context) => BlocProvider.of(context);
   late String verificationId;
   late String otpCode;
+  // ignore: avoid_init_to_null
   late var countryCode = null;
 
   var phoneNumberController = TextEditingController();

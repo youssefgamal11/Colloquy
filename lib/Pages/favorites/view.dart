@@ -50,7 +50,8 @@ class FavoritesScreen extends StatelessWidget {
                         child: ListView.builder(
                           shrinkWrap: false,
                           physics: const BouncingScrollPhysics(),
-                          itemBuilder: ((context, index) => favoriteItem()),
+                          itemBuilder: ((context, index) =>
+                              favoriteItem(friendName: '', friendUid: '')),
                           itemCount: 20,
                         ),
                       ),

@@ -4,13 +4,10 @@ import 'package:chat_app/Pages/OnBoarding/view.dart';
 import 'package:chat_app/Pages/SignUp/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'Helper/bloc_observer.dart';
 import 'Pages/Drawer/view.dart';
-import 'Pages/SignUp/view.dart';
 
 late Widget widget;
 
@@ -21,7 +18,7 @@ void main() async {
   await Firebase.initializeApp();
   FirebaseAuth.instance.authStateChanges().listen((user) {
     if (user == null && onBoarding == null) {
-      widget = OnBoardingScreen();
+      widget = const OnBoardingScreen();
     } else {
       widget = HomeScreen();
     }

@@ -4,10 +4,9 @@ import 'package:chat_app/Helper/shared_pref.dart';
 import 'package:chat_app/Pages/SignUp/view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart';
 
 class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({Key? key}) : super(key: key);
+  const OnBoardingScreen({Key? key}) : super(key: key);
   // var onBoarding = CacheHelper.putBoolen(key: 'onBoarding', value: false);
 
   @override

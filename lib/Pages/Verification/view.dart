@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../Helper/constant.dart';
 import '../Home/view.dart';
-import '../SignIn/view.dart';
 import '../SignUp/cubit/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -161,25 +159,25 @@ class verificationScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const SizedBox(height: 15),
-                                  GestureDetector(
-                                    onTap: () {},
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: const [
-                                        Icon(
-                                          Icons.refresh_rounded,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                        // Text(
-                                        //   '  Resend Code ',
-                                        //   style:
-                                        //       TextStyle(color: bacgroundColor),
-                                        // ),
-                                      ],
-                                    ),
-                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () {},
+                                  //   child: Row(
+                                  //     mainAxisAlignment:
+                                  //         MainAxisAlignment.center,
+                                  //     children: const [
+                                  //       Icon(
+                                  //         Icons.refresh_rounded,
+                                  //         color: Colors.white,
+                                  //         size: 15,
+                                  //       ),
+                                  //       // Text(
+                                  //       //   '  Resend Code ',
+                                  //       //   style:
+                                  //       //       TextStyle(color: bacgroundColor),
+                                  //       // ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                   const SizedBox(height: 15),
                                 ],
                               )

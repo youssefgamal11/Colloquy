@@ -12,6 +12,8 @@ import '../favorites/view.dart';
 class MyDrawerController extends GetxController {}
 
 class DrawerScreen extends GetView<MyDrawerController> {
+  const DrawerScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
