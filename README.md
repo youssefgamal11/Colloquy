@@ -1,4 +1,4 @@
-# chat_app
+# Colloquy
 
 A new Flutter project.
 
