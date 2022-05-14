@@ -38,7 +38,7 @@ class DrawerScreen extends GetView<MyDrawerController> {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(left: 10.0),
-                    child: Text('Chats',
+                    child: Text('Colloquy',
                         style: TextStyle(
                             color: textColor2,
                             fontSize: 32,

@@ -32,7 +32,7 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       const SizedBox(height: 10),
                       const Center(
-                          child: Text('Chats',
+                          child: Text('Colloquy',
                               style: TextStyle(
                                   color: textColor2,
                                   fontSize: 35,

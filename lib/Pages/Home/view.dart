@@ -29,7 +29,7 @@ class HomeScreen extends GetView<MyDrawerController> {
         backgroundColor: bacgroundColor,
         appBar: AppBar(
           backgroundColor: bacgroundColor,
-          title: const Text('Chats',
+          title: const Text('Colloquy',
               style: TextStyle(
                   color: textColor2,
                   fontSize: 32,

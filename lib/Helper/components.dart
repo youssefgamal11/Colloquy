@@ -147,29 +147,29 @@ Widget chatItem(
                               fontSize: 15),
                         ),
                         const SizedBox(height: 5),
-                        const Text(
-                          'hi youssef how are you',
-                          style:
-                              TextStyle(color: Color(0xffF87575), fontSize: 12),
-                        )
+                        // const Text(
+                        //   'hi youssef how are you',
+                        //   style:
+                        //       TextStyle(color: Color(0xffF87575), fontSize: 12),
+                        // )
                       ]),
                   const Spacer(),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: const [
-                      CircleAvatar(
-                        radius: 8,
-                        backgroundColor: Color(0xffFF8D8D),
-                      ),
-                      Text(
-                        '2',
-                        style: TextStyle(
-                            color: Color(0xff26515C),
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  )
+                  // Stack(
+                  //   alignment: Alignment.center,
+                  //   children: const [
+                  //     CircleAvatar(
+                  //       radius: 8,
+                  //       backgroundColor: Color(0xffFF8D8D),
+                  //     ),
+                  //     Text(
+                  //       '2',
+                  //       style: TextStyle(
+                  //           color: Color(0xff26515C),
+                  //           fontSize: 10,
+                  //           fontWeight: FontWeight.bold),
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
               const SizedBox(height: 5),

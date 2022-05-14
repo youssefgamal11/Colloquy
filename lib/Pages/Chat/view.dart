@@ -285,7 +285,8 @@ class _ChatScreenState extends State<ChatScreen> {
                                                                                 Padding(
                                                                                   padding: const EdgeInsets.only(right: 5, bottom: 5),
                                                                                   child: Row(
-                                                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                                                     mainAxisSize: MainAxisSize.min,
                                                                                     children: [
                                                                                       Text(
@@ -300,7 +301,7 @@ class _ChatScreenState extends State<ChatScreen> {
                                                                           ),
                                                                           decoration: const BoxDecoration(
                                                                               color: Color(0xffF5F5F5),
-                                                                              borderRadius: BorderRadiusDirectional.only(topStart: Radius.circular(8), topEnd: Radius.circular(15), bottomEnd: Radius.circular(8))),
+                                                                              borderRadius: BorderRadiusDirectional.only(bottomStart: Radius.circular(8), topEnd: Radius.circular(15), bottomEnd: Radius.circular(8))),
                                                                         ),
                                                                       )
                                                                     ],

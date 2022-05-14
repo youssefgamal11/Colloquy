@@ -1,3 +1,4 @@
+import 'package:chat_app/Helper/components.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../Helper/constant.dart';
@@ -16,9 +17,7 @@ class verificationScreen extends StatelessWidget {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is PhoneOTPVerified) {
-          Navigator.pop(context);
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          navigateAndFinish(context, HomeScreen());
         }
         if (state is ErrorOccured) {
           String errorMsg = (state).error;
